@@ -10,7 +10,6 @@
  <a class="service-card address" asp-page="/UpdateRequest" asp-route-type="Address"><span class="service-icon">⌂</span><h3>Change Address</h3><p>Update house, street, locality, city, state and PIN code.</p><b>Start request →</b></a>
  <a class="service-card phone" asp-page="/UpdateRequest" asp-route-type="Phone"><span class="service-icon">☎</span><h3>Update Phone Number</h3><p>Replace your registered mobile number using OTP verification.</p><b>Start request →</b></a>
  <a class="service-card email" asp-page="/UpdateRequest" asp-route-type="Email"><span class="service-icon">@@</span><h3>Update Email</h3><p>Change the email address linked with your application.</p><b>Start request →</b></a>
- <a class="service-card name" asp-page="/UpdateRequest" asp-route-type="Name"><span class="service-icon">Aa</span><h3>Correct Applicant Name</h3><p>Request a name correction with supporting identity proof.</p><b>Start request →</b></a>
 </section>
 <section class="card request-history"><div class="card-title title-row"><h2>My Recent Requests</h2><code>Status Tracker</code></div><div class="history-body">
 @if(string.IsNullOrWhiteSpace(Model.LastRequestId)){<div class="empty-state">No requests submitted yet. Choose one of the services above to begin.</div>}
