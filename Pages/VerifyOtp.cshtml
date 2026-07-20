@@ -1,0 +1,44 @@
+@page
+@model KHBAddressPortal.Pages.VerifyOtpModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verify OTP · KHB Portal</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="tricolor"></div>
+    <header class="gov-header"><div class="brand"><div class="logo">KHB</div><div><h1>Karnataka Housing Board</h1><p>ಕರ್ನಾಟಕ ಗೃಹ ಮಂಡಳಿ</p><small> APPLICANT PROFILE UPDATE PORTAL · GOVERNMENT OF KARNATAKA</small></div></div></header>
+    <nav class="nav"><b>Home</b></nav>
+    <main class="page-center">
+        <form method="post" class="card login-card">
+            @Html.AntiForgeryToken()
+            <div class="card-title"><h2>OTP Verification</h2></div>
+            <div class="card-body">
+                @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+                {
+                    <div class="alert success">@Model.StatusMessage</div>
+                }
+                <p class="otp-info">A 6-digit OTP was sent to your registered mobile number and email.</p>
+                <label asp-for="Otp">Enter OTP</label>
+                <input asp-for="Otp" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit OTP" autocomplete="one-time-code" />
+                <span asp-validation-for="Otp" class="field-error"></span>
+                @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+                {
+                    <div class="alert error">@Model.ErrorMessage</div>
+                }
+                <button type="submit" class="btn block">Verify OTP</button>
+                <button type="submit" asp-page-handler="Resend" class="btn outline block">Resend OTP</button>
+                <a class="center-link" asp-page="/Login">Back to login</a>
+                <p class="demo-note">Demo OTP: <strong>123456</strong></p>
+            </div>
+        </form>
+    </main>
+    <footer>© Karnataka Housing Board — Applicant Profile Update Portal Prototype · For demonstration only</footer>
+</body>
+</html>

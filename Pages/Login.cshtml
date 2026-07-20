@@ -1,0 +1,52 @@
+@page
+@model KHBAddressPortal.Pages.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login · KHB Address Change Portal</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+<body>
+    <div class="tricolor"></div>
+    <header class="gov-header login-header">
+        <div class="brand"><div class="logo">KHB</div><div><h1>Karnataka Housing Board</h1><p>ಕರ್ನಾಟಕ ಗೃಹ ಮಂಡಳಿ</p><small> APPLICANT PROFILE UPDATE PORTAL · GOVERNMENT OF KARNATAKA</small></div></div>
+        <div class="login-tabs" aria-label="Select login type">
+            <button type="button" id="applicantTab" class="active">Applicant</button>
+            <button type="button" id="adminTab">Admin</button>
+        </div>
+    </header>
+    <nav class="nav"></nav>
+    <main class="page-center">
+        <form method="post" class="card login-card">
+            @Html.AntiForgeryToken()
+            <input asp-for="LoginType" type="hidden" id="loginType" />
+            <div class="card-title"><h2 id="loginTitle">Applicant Login</h2></div>
+            <div class="card-body">
+                <p class="intro" id="loginIntro">Sign in using your application number.</p>
+                <label asp-for="UserId" id="userIdLabel">Application Number</label>
+                <input asp-for="UserId" id="userId" placeholder="e.g. APP202600123" autocomplete="username" />
+                <span asp-validation-for="UserId" class="field-error"></span>
+
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" placeholder="Enter password" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="field-error"></span>
+
+                @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+                {
+                    <div class="alert error">@Model.ErrorMessage</div>
+                }
+                <button type="submit" class="btn block">Log In</button>
+                <a class="center-link" href="#">Forgot password?</a>
+            </div>
+        </form>
+    </main>
+    <footer>© Karnataka Housing Board —  Applicant Profile Update Portal Prototype · For demonstration only</footer>
+    <script src="~/js/login.js"></script>
+</body>
+</html>

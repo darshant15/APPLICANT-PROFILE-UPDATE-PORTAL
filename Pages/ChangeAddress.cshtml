@@ -1,0 +1,41 @@
+@page
+@model KHBAddressPortal.Pages.ChangeAddressModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Address Change Request · KHB</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<div class="tricolor"></div>
+<header class="gov-header header-row"><div class="brand"><div class="logo">KHB</div><div><h1>Karnataka Housing Board</h1><p>ಕರ್ನಾಟಕ ಗೃಹ ಮಂಡಳಿ</p><small>APPLICANT PROFILE UPDATE PORTAL · GOVERNMENT OF KARNATAKA</small></div></div><form method="post" asp-page-handler="Logout"><button class="logout">Logout</button></form></header>
+<nav class="nav"><b>Home</b><span>My Applications</span><span>Address Change</span><span>Contact</span></nav>
+<main class="form-shell">
+    <div class="breadcrumb"><b>Home</b> / Applicant Portal / Address Change Request</div>
+    <form method="post" enctype="multipart/form-data" class="card address-card">
+        @Html.AntiForgeryToken()
+        <div class="card-title title-row"><h2>Address Change Request Form</h2><code>@Model.ApplicationNumber</code></div>
+        <div class="card-body">
+            @if (!string.IsNullOrWhiteSpace(Model.SuccessMessage)) { <div class="alert success">@Model.SuccessMessage</div> }
+            <h3>Applicant Details</h3>
+            <div class="grid"><div><label>Application Number</label><input value="@Model.ApplicationNumber" readonly /></div><div><label>Applicant Name</label><input value="Rahul Kumar" readonly /></div><div><label>Email ID</label><input value="rahul@gmail.com" readonly /></div><div><label>Mobile Number</label><input value="9876543210" readonly /></div></div>
+            <h3>Current Address</h3>
+            <div class="grid"><div><label>House No / Flat No</label><input value="12" readonly /></div><div><label>Street</label><input value="MG Road" readonly /></div><div><label>Area</label><input value="Ashok Nagar" readonly /></div><div><label>City</label><input value="Bengaluru" readonly /></div><div><label>State</label><input value="Karnataka" readonly /></div><div><label>PIN Code</label><input value="560001" readonly /></div></div>
+            <h3>New Address</h3>
+            <div class="grid"><div><label asp-for="HouseNo"></label><input asp-for="HouseNo" placeholder="e.g. 45" /><span asp-validation-for="HouseNo" class="field-error"></span></div><div><label asp-for="Street"></label><input asp-for="Street" placeholder="e.g. Whitefield Main Road" /><span asp-validation-for="Street" class="field-error"></span></div><div><label asp-for="Area"></label><input asp-for="Area" placeholder="e.g. Whitefield" /><span asp-validation-for="Area" class="field-error"></span></div><div><label asp-for="City"></label><input asp-for="City" placeholder="e.g. Bengaluru" /><span asp-validation-for="City" class="field-error"></span></div><div><label asp-for="State"></label><input asp-for="State" placeholder="e.g. Karnataka" /><span asp-validation-for="State" class="field-error"></span></div><div><label asp-for="PinCode"></label><input asp-for="PinCode" maxlength="6" placeholder="e.g. 560066" /><span asp-validation-for="PinCode" class="field-error"></span></div></div>
+            <h3>Reason for Change</h3><label asp-for="Reason"></label><textarea asp-for="Reason" placeholder="e.g. Shifted to new residence"></textarea><span asp-validation-for="Reason" class="field-error"></span>
+            <h3>Supporting Document</h3><label>Document Type</label><div class="radio-grid">@foreach (var type in Model.DocumentTypes) { <label><input asp-for="DocumentType" type="radio" value="@type" /> @type</label> }</div><span asp-validation-for="DocumentType" class="field-error"></span>
+            <label asp-for="Document"></label><div class="dropzone" id="dropzone">Choose File — click to attach</div><input asp-for="Document" class="hidden-file" accept=".pdf,.jpg,.jpeg,.png" /><span asp-validation-for="Document" class="field-error"></span><small class="file-hint">Accepted: PDF, JPG, PNG · Maximum size: 5 MB</small>
+            <label class="confirm"><input asp-for="Confirmed" /> I confirm that the above information is true.</label><span asp-validation-for="Confirmed" class="field-error"></span>
+            <div class="actions"><a asp-page="/Login" class="btn outline">Cancel</a><button type="submit" class="btn">Submit Request</button></div>
+        </div>
+    </form>
+</main>
+<footer>© Karnataka Housing Board — Applicant Profile Update Portal Prototype · For demonstration only</footer>
+<script src="~/js/site.js"></script>
+</body></html>

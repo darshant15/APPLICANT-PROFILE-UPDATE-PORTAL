@@ -1,0 +1,18 @@
+@page
+@model KHBAddressPortal.Pages.ApplicantDashboardModel
+@{ Layout = null; }
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Applicant Dashboard · KHB</title><link rel="stylesheet" href="~/css/site.css"/><link rel="stylesheet" href="~/css/dashboard.css"/></head><body>
+<div class="tricolor"></div><header class="gov-header header-row"><div class="brand"><div class="logo">KHB</div><div><h1>Karnataka Housing Board</h1><p>ಕರ್ನಾಟಕ ಗೃಹ ಮಂಡಳಿ</p><small>APPLICANT PROFILE UPDATE PORTAL · GOVERNMENT OF KARNATAKA</small></div></div><form method="post" asp-page-handler="Logout"><button class="logout">Logout</button></form></header>
+<nav class="nav"><b>Dashboard</b><span>My Requests</span><span>Profile Updates</span><span>Help</span></nav>
+<main class="form-shell"><div class="dashboard-heading"><div><h2>Applicant Dashboard</h2><p>Application Number: <strong>@Model.ApplicationNumber</strong></p></div><span class="applicant-badge">APPLICANT</span></div>
+<section class="welcome-panel"><h3>What would you like to update?</h3><p>Select a service below to submit a new profile change request.</p></section>
+<section class="service-slider" aria-label="Update request choices">
+ <a class="service-card address" asp-page="/UpdateRequest" asp-route-type="Address"><span class="service-icon">⌂</span><h3>Change Address</h3><p>Update house, street, locality, city, state and PIN code.</p><b>Start request →</b></a>
+ <a class="service-card phone" asp-page="/UpdateRequest" asp-route-type="Phone"><span class="service-icon">☎</span><h3>Update Phone Number</h3><p>Replace your registered mobile number using OTP verification.</p><b>Start request →</b></a>
+ <a class="service-card email" asp-page="/UpdateRequest" asp-route-type="Email"><span class="service-icon">@@</span><h3>Update Email</h3><p>Change the email address linked with your application.</p><b>Start request →</b></a>
+ <a class="service-card name" asp-page="/UpdateRequest" asp-route-type="Name"><span class="service-icon">Aa</span><h3>Correct Applicant Name</h3><p>Request a name correction with supporting identity proof.</p><b>Start request →</b></a>
+</section>
+<section class="card request-history"><div class="card-title title-row"><h2>My Recent Requests</h2><code>Status Tracker</code></div><div class="history-body">
+@if(string.IsNullOrWhiteSpace(Model.LastRequestId)){<div class="empty-state">No requests submitted yet. Choose one of the services above to begin.</div>}
+else{<div class="history-row"><div><strong>@Model.LastRequestId</strong><span>@Model.LastRequestType update request</span></div><span class="pending-pill">Pending Review</span></div>}
+</div></section></main><footer>© Karnataka Housing Board — Applicant Services Portal Prototype</footer></body></html>
