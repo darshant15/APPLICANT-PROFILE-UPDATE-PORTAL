@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KHBAddressPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f82be265a782b3f64232293dc9db1c8baafbf94")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ddb1e8dd5242dd5fac6eb7c11786228d81fc6e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("KHBAddressPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KHBAddressPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
